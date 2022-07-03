@@ -1,14 +1,18 @@
 import { Box } from "@chakra-ui/react";
-import Margins from "./Margins";
-import Paddings from "./Paddings";
+import Editor from "components/Editor";
 
 const MarginsAndPaddings = () => {
   return (
-    <Margins>
-      <Box border="2px solid" h="100%" borderColor="bg.secondary">
-        <Paddings />
-      </Box>
-    </Margins>
+    <Box width="100%" bg="bg.main" h="180px">
+      <Editor editableProp="margin">
+        <Editor
+          editableProp="padding"
+          border="2px solid"
+          h="100%"
+          borderColor="bg.secondary"
+        />
+      </Editor>
+    </Box>
   );
 };
 

@@ -32,9 +32,6 @@ export const SelectedElementProvider = ({ children }: Props) => {
 
   const handleSelectElement: SetSelectedElement = useCallback(
     (element) => {
-      console.log(element);
-      console.log(selectedElement);
-      console.log(element === selectedElement);
       if (element === selectedElement) {
         return;
       }

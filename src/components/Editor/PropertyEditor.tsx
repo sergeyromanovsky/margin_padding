@@ -1,11 +1,5 @@
-import React, {
-  useCallback,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { Flex, Input as ChakraInput } from "@chakra-ui/react";
+import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { Box, Input as ChakraInput } from "@chakra-ui/react";
 import { useOutsideClick } from "@chakra-ui/react";
 import { EditableProp } from ".";
 import { useSelectedElement } from "hooks/useSelectedElement";
@@ -39,11 +33,10 @@ const PropertyEditor = ({ position, editableProp }: Props) => {
   }, [initialValue, selectedElement]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-
     if (!selectedElement) {
       return;
     }
+    const { value } = e.target;
 
     selectedElement.style[property] = value;
     setValue(value);
@@ -65,53 +58,14 @@ const PropertyEditor = ({ position, editableProp }: Props) => {
     handler: handleOutsideClick,
   });
 
-  const getStyleProps = useMemo(() => {
-    switch (position) {
-      case "top":
-        return {
-          top: "0px",
-          left: "50%",
-          transform: "translate(-50%)",
-        };
-      case "left":
-        return {
-          top: "50%",
-          left: "0",
-          transform: "translate(0, -50%)",
-        };
-      case "bottom":
-        return {
-          bottom: "0px",
-          left: "50%",
-          transform: "translate(-50%)",
-        };
-      case "right":
-        return {
-          top: "50%",
-          right: "0",
-          transform: "translate(0, -50%)",
-        };
-      default:
-        return {};
-    }
-  }, [position]);
-
   const wasChanged = Boolean(value && value !== initialValue);
 
   return (
-    <Flex
-      width="30px"
-      height="30px"
-      position="absolute"
-      style={getStyleProps}
-      alignItems="center"
-      justifyContent="center"
-      onClick={() => setShowInput(true)}
-      cursor="pointer"
-    >
+    <Box onClick={() => setShowInput(true)} cursor="pointer" p="5px">
       {showInput ? (
         <ChakraInput
           ref={inputRef}
+          maxW="40px"
           padding="0 5px"
           value={value || ""}
           onChange={handleChange}
@@ -120,11 +74,11 @@ const PropertyEditor = ({ position, editableProp }: Props) => {
           type="string"
         />
       ) : (
-        <StyledText $isValid={isValid} $wasChanged={wasChanged}>
+        <StyledText $isValid={isValid} $wasChanged={wasChanged} lineHeight="25px">
           {value}
         </StyledText>
       )}
-    </Flex>
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import Collapsible from "components/PropertiesPanel/Collapsible";
+import Collapsible from "components/Collapsible";
 import MarginsAndPaddings from "./MarginsAndPaddings";
 
 
@@ -7,7 +7,7 @@ const PropertiesPanel = () => {
   return (
     <Box
       as="aside"
-      w="32rem"
+      w="320px"
       bg="bg.secondary"
       minH="100vh"
     >

@@ -30,14 +30,24 @@ export const SelectedElementProvider = ({ children }: Props) => {
   );
   const [initialStyles, setInitialStyles] = useState<CSSObject>({});
 
-  const handleSelectElement: SetSelectedElement = useCallback((element) => {
-    if (element) {
-      const styles = getComputedStyle(element);
-      setInitialStyles({ ...styles });
-    }
+  const handleSelectElement: SetSelectedElement = useCallback(
+    (element) => {
+      console.log(element);
+      console.log(selectedElement);
+      console.log(element === selectedElement);
+      if (element === selectedElement) {
+        return;
+      }
 
-    setSelectedElement(element);
-  }, []);
+      if (element) {
+        const styles = getComputedStyle(element);
+        setInitialStyles({ ...styles });
+      }
+
+      setSelectedElement(element);
+    },
+    [selectedElement]
+  );
 
   const memoizedValue = useMemo(() => {
     return {

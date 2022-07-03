@@ -17,7 +17,7 @@ const Component = ({ children, ...rest }: Props) => {
       {...rest}
       ref={element}
       border="1px solid white"
-      p="2rem"
+      p="20px"
       cursor="pointer"
       _hover={{ borderColor: "bg.secondary", color: "bg.secondary" }}
       transition="all 0.3s"

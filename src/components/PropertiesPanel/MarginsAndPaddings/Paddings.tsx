@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import Editor from "./Editor";
+import Editor from "components/Editor";
 
 const MARGIN = 5;
 

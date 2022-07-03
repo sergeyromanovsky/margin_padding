@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
+import Editor from 'components/Editor';
 import React from "react";
-import Editor from "./Editor";
 
 interface Props {
   children: React.ReactNode;
@@ -10,8 +10,8 @@ const Margins = ({ children }: Props) => {
     <Box
       width="100%"
       bg="bg.main"
-      height="15rem"
-      padding="3rem"
+      height="150px"
+      padding="30px"
       position="relative"
     >
       <Editor editableProp="margin" />
